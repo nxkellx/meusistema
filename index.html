@@ -1,525 +1,496 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Busca de Técnico Responsável</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#000000;
-    --card:#0a0a0a;
-    --accent:#6ee7b7;
-    --muted:#9aa4b2;
-    --glass: rgba(255,255,255,0.03);
-  }
-  *{box-sizing:border-box;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
-  body{
-    margin:0;
-    background:linear-gradient(180deg,#000000 0%, #050505 100%);
-    color:#e6eef6;
-    min-height:100vh;
-    padding:28px;
-  }
-  .wrap{
-    max-width:1100px;margin:0 auto;
-  }
-  header{
-    display:flex;align-items:center;gap:18px;margin-bottom:18px;
-  }
-  header h1{
-    margin:0;font-size:20px;font-weight:700;color:var(--accent);
-  }
-  .search-area{
-    display:flex;gap:12px;align-items:center;margin-bottom:18px;
-  }
-  .search-box{
-    flex:1;display:flex;align-items:center;background:var(--glass);padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);
-  }
-  .search-box input{
-    width:100%;background:transparent;border:0;color:#eaf6f0;font-size:16px;outline:none;padding:6px;
-  }
-  .btn{
-    background:linear-gradient(90deg,#10b981,#06b6d4);border:none;color:#062024;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer;
-    box-shadow:0 6px 18px rgba(2,6,23,0.6);
-  }
-  .controls{display:flex;gap:10px;align-items:center;}
-  .toggle {
-    background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:10px;color:var(--muted);cursor:pointer;
-  }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Painel de Satisfação - DIRECT INTERNET</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
-  main{display:grid;grid-template-columns: 1fr 380px;gap:18px;}
-  /* results list */
-  .results { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03); min-height:400px; }
-  .cards{display:grid;grid-template-columns:repeat(1,1fr);gap:10px;}
-  .card{
-    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);
-    display:flex;flex-direction:column;gap:6px;
-  }
-  .card h3{margin:0;font-size:15px;color:#fff}
-  .meta{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:13px}
-  .highlight{background:linear-gradient(90deg,#ffeeba55,#ffd16655);color:#062024;padding:2px 6px;border-radius:6px;font-weight:600}
-  /* side panel */
-  .panel{background:var(--card);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);}
-  .stats{display:flex;gap:8px;flex-direction:column}
-  .stat-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,0.02);color:var(--muted)}
-  .small{font-size:13px;color:var(--muted)}
-  /* table view */
-  .table-wrap{overflow:auto;background:transparent;border-radius:8px;margin-top:10px;}
-  table{width:100%;border-collapse:collapse;background:transparent}
-  th,td{padding:8px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.03);font-size:14px}
-  th{color:var(--accent);font-weight:700}
-  td{color:#e7f6f0}
-  .no-results{padding:24px;text-align:center;color:var(--muted)}
-  footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}
-  @media(max-width:900px){
-    main{grid-template-columns:1fr}
-    .panel{order:2}
-  }
-</style>
+    <style>
+        /* -------------------------------------------------------
+        | CONFIGURAÇÕES GLOBAIS |
+        ------------------------------------------------------- */
+        :root {
+            --bg-dark: #000000;
+            --panel-bg: #0d0d0d;
+            --primary-green: #39ff14; /* Verde Neon */
+            --secondary-green: #008000; /* Verde mais escuro para bordas */
+            --negative-red: #ff3333;
+            --percent-yellow: #FFFF00; /* Amarelo para destaque de percentual */
+            --text-light: #e0e0f0; /* Cinza claro para texto geral */
+            --border-glow: rgba(57, 255, 20, 0.4); /* Brilho da borda */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow: hidden; 
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='noise'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23noise)' opacity='0.08'/></svg>");
+        }
+
+        /* -------------------------------------------------------
+        | CONTAINER PRINCIPAL |
+        ------------------------------------------------------- */
+        .main-panel-container {
+            width: 95%;
+            max-width: 1700px;
+            height: 95%;
+            background-color: var(--panel-bg);
+            border: 1px solid var(--secondary-green);
+            box-shadow: 0 0 25px var(--border-glow);
+            border-radius: 10px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* -------------------------------------------------------
+        | CABEÇALHO |
+        ------------------------------------------------------- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(57, 255, 20, 0.2);
+        }
+
+        .logo-container {
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+        .logo-container img {
+            max-height: 100%;
+            width: auto;
+            filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+        }
+
+        .header-status {
+            color: var(--primary-green);
+            font-size: 1.1em;
+            letter-spacing: 1px;
+        }
+
+        /* -------------------------------------------------------
+        | CONTEÚDO PRINCIPAL (Mascote + Data Feed) |
+        ------------------------------------------------------- */
+        .content-area {
+            flex-grow: 1;
+            display: flex;
+            gap: 40px;
+            /* Altura base flexível para o mascote se adaptar */
+            min-height: calc(100% - 120px); 
+        }
+
+        /* -------------------------------------------------------
+        | PAINEL LATERAL (Mascote) - ALTURA AJUSTADA |
+        ------------------------------------------------------- */
+        .system-status-panel {
+            width: 250px;
+            /* AJUSTE: Altura mínima para o mascote + texto + total de tickets */
+            height: 380px; 
+            flex-shrink: 0;
+            padding: 20px;
+            border: 1px solid var(--primary-green);
+            background-color: #1a1a1a;
+            box-shadow: 0 0 12px var(--border-glow);
+            text-align: center;
+            font-size: 1em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 8px;
+            /* AJUSTE: Remove o flex-grow para não esticar */
+            flex-grow: 0;
+        }
+        
+        .mascote-placeholder {
+            width: 100px; /* AJUSTE: Mascote ligeiramente menor */
+            height: 100px;
+            margin-bottom: 15px;
+        }
+        .mascote-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .system-label {
+            font-size: 1.05em;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            margin-top: 10px;
+            letter-spacing: 1.2px;
+        }
+
+        .data-stream {
+            width: 2px;
+            height: 35px;
+            background-color: var(--primary-green);
+            margin: 12px 0;
+            box-shadow: 0 0 6px var(--primary-green);
+        }
+
+        /* -------------------------------------------------------
+        | ÁREA DE DADOS PRINCIPAL |
+        ------------------------------------------------------- */
+        .data-feed-area {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .data-feed-area h2 {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 30px;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.7);
+            letter-spacing: 2.5px;
+            text-align: center;
+        }
+
+        /* -------------------------------------------------------
+        | ÁREA DE COMENTÁRIOS (CARROSSEL) |
+        ------------------------------------------------------- */
+        .comment-carousel-wrapper {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 120px;
+            padding: 0 20px;
+        }
+
+        .comment-title {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: var(--primary-green);
+            text-shadow: 0 0 12px var(--primary-green);
+            text-align: center;
+            width: 100%;
+        }
+
+        #comment-carousel {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 250px;
+            position: relative;
+        }
+
+        .comment-box {
+            width: 90%;
+            max-width: 800px;
+            padding: 30px;
+            border-radius: 15px;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(57, 255, 20, 0.4);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            font-size: 1.3em;
+            position: absolute;
+        }
+        
+        .comment-text {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .comment-author {
+            display: block;
+            font-size: 0.8em;
+            color: var(--primary-green);
+            margin-top: 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .comment-box.positive { border-left: 5px solid var(--primary-green); }
+        .comment-box.negative { border-left: 5px solid var(--negative-red); }
+        .comment-box.neutral { border-left: 5px solid var(--percent-yellow); }
+
+        /* -------------------------------------------------------
+        | ÁREA DE MÉTRICAS (PERCENTUAL) |
+        ------------------------------------------------------- */
+        .metrics-area {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+
+        .percentage-box {
+            border: 1px solid var(--primary-green);
+            padding: 20px 30px; 
+            width: 250px; 
+            text-align: center;
+            background-color: rgba(0,0,0,0.7);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
+            border-radius: 10px;
+        }
+
+        .percentage-value {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--percent-yellow);
+            text-shadow: 0 0 10px rgba(255, 255, 0, 0.8);
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 0, 0.3);
+            padding-bottom: 5px;
+        }
+
+        .percentage-detail {
+            font-size: 0.9em;
+            line-height: 1.6;
+            text-align: left;
+        }
+        .detail-line {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* -------------------------------------------------------
+        | BREAKPOINTS (Responsividade Básica) |
+        ------------------------------------------------------- */
+        @media (max-width: 1200px) {
+            .system-status-panel { height: 350px; } 
+        }
+
+        @media (max-width: 768px) {
+            .content-area { flex-direction: column; gap: 20px; }
+            .system-status-panel { height: auto; flex-direction: row; justify-content: flex-start; align-items: center; }
+            .system-status-panel .mascote-placeholder { margin-right: 20px; margin-bottom: 0; }
+            .metrics-area { position: static; margin-top: 30px; display: flex; justify-content: center; }
+            .comment-carousel-wrapper { margin-bottom: 30px; }
+        }
+    </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <header>
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.6))">
-        <rect x="2" y="3" width="20" height="18" rx="3" fill="#06b6d4"></rect>
-        <path d="M7 9h10M7 13h6" stroke="#042028" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <h1>Busca de Técnico Responsável — Direct Internet</h1>
-    </header>
 
-    <div class="search-area">
-      <div class="search-box" role="search">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="margin-right:8px;opacity:.9">
-          <path d="M21 21l-4.35-4.35" stroke="#dff7ee" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="11" cy="11" r="6.2" stroke="#dff7ee" stroke-width="1.6"/>
-        </svg>
-        <input id="search" placeholder="Digite qualquer parte da região, bairro ou nome do técnico..." autofocus />
-      </div>
+    <div class="main-panel-container">
 
-      <div class="controls">
-        <button class="toggle" id="viewToggle">Ver: Cards</button>
-        <button class="btn" id="clearBtn">Limpar</button>
-      </div>
+        <div class="header">
+            <div class="logo-container">
+                <img src="logo.png" alt="Logotipo da Empresa DIRECT INTERNET">
+            </div>
+            <div class="header-status">[STATUS: FEED DE DADOS ATIVO]</div>
+        </div>
+
+        <div class="content-area">
+            
+            <div class="system-status-panel">
+                <div class="mascote-placeholder">
+                    <img src="mascote.png" alt="Mascote Analista de Dados">
+                </div>
+                <span class="system-label">ANALISTA DE DADOS V.2.1</span>
+                <div class="data-stream"></div>
+                <div>TOTAL DE TICKETS ANALISADOS: <span id="total-comments">0</span></div>
+            </div>
+
+            <div class="data-feed-area">
+                <h2>SATISFAÇÃO DO MÊS</h2>
+
+                <div class="comment-carousel-wrapper">
+                    <div class="comment-title">Comentários de Satisfação de Ticket Mensal:</div>
+                    <div id="comment-carousel">
+                        </div>
+                </div>
+
+                <div class="metrics-area">
+                    <div class="percentage-box">
+                        <div class="percentage-value" id="positive-percentage">--%</div>
+                        
+                        <div class="percentage-detail">
+                            <div class="detail-line" style="color: var(--primary-green);">
+                                <span>SATISFAÇÃO (POS.):</span>
+                                <span id="positive-count">0</span>
+                            </div>
+                            <div class="detail-line" style="color: var(--negative-red);">
+                                <span>INSATISFAÇÃO (NEG.):</span>
+                                <span id="negative-count">0</span>
+                            </div>
+                            <div class="detail-line" style="color: var(--percent-yellow);">
+                                <span>NEUTROS:</span>
+                                <span id="neutral-count">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <main>
-      <section class="results" id="resultsSection">
-        <div id="resultsCount" style="margin-bottom:10px;color:var(--muted);font-size:13px">Resultados: <strong id="count">0</strong></div>
-        <div id="cardsContainer" class="cards"></div>
+    <script>
+        const comments = [
+            "2 dias sem Net e vou esperar mais um ☹️isso que pago antes do praso",
+            "A empresa não tem um sistema rápido e eficiente na hora de dar suporte aos clientes! Toda vez que entro...",
+            "Agendamento com o técnico que com a graça de Deus resolverá 🙏🙌",
+            "Agendamos uma visita técnica",
+            "Aguardando técnico, estamos dois dias sem internet...",
+            "Amo os serviços,e os atendentes são os melhores...",
+            "Após o contato inicial, o retorno demorou mais de 40 minutos...",
+            "Atenciosa e resolveu o problema com paciência",
+            "Atendente muito atenciosa... parabéns",
+            "Atendente super rápida! Excelente atendimento.",
+            "Atendimento da atende ok nota 10...",
+            "Atendimento da Vitória muito prestativo.",
+            "Atendimento rápido e eficiente 👏👏",
+            "Atendimento super atencioso, teria cancelado sem ele",
+            "Atendimento super rápido, parabéns.",
+            "Atendimento horrível, demora horas...",
+            "Atendimento ótimo. Sara atendeu e habilitou meu sinal",
+            "Demora no retorno. Problema não resolvido.",
+            "Demora pra ser atendido...",
+            "Demorou pra responder, mas resolveu.",
+            "Retorno muito demorado no WhatsApp.",
+            "Sem internet desde sexta... técnico veio e resolveu!",
+            "Aguardando visita do técnico há quase uma semana...",
+            "Excelente atendimento, muito rápido.",
+            "Excelente profissional remoto!",
+            "Fiquei muito contente, problema resolvido.",
+            "Fiquei sem internet no único dia que poderia usar.",
+            "Fui bem atendido, demonstrou empatia.",
+            "Fui muito bem atendida.",
+            "Funcionou e depois voltou a travar...",
+            "Gostaria de registrar reconhecimento à Maria...",
+            "Gostei do atendimento mas respostas lentas",
+            "Gostei muito, rápido e resolveu.",
+            "Atendimento rápido pela Vitória, excelente.",
+            "Moça resolveu o problema e foi solicita.",
+            "Muito boa",
+            "Muito boa satisfatória",
+            "Muito bom",
+            "Muito bom problema resolvido",
+            "Muito demorado pra atender no WhatsApp",
+            "Não consegui mas atendente foi gentil",
+            "Não resolveu muita coisa, atendimento muito lerdo",
+            "Ninguém responde e telefone ocupado",
+            "Internet oscilando o dia todo",
+            "Não estou satisfeito, wi-fi vive caindo",
+            "Não precisou, Internet voltou",
+            "Atendente foi ótimo, mas problema externo",
+            "Atendente foi muito grosso",
+            "Atendimento bom porém demora muito pra iniciar",
+            "Perfeito, resolvido rápido",
+            "Problema resolvido, técnico competente",
+            "Péssimo, demora muito pra atender",
+            "Internet vive caindo, já foi melhor",
+            "Resolvido muito rápido, satisfeito",
+            "Muito eficientes",
+            "Sem possibilidade de agendar horário exato...",
+            "Trocaram modem e internet não funciona depois...",
+            "Uma porcaria, demora demais pra responder",
+            "Ótimo atendimento, visita rápida e eficiente"
+        ];
 
-        <div id="tableContainer" class="table-wrap" style="display:none;margin-top:12px">
-          <table>
-            <thead><tr><th>Região</th><th>Bairro</th><th>Técnico Responsável</th></tr></thead>
-            <tbody id="tableBody"></tbody>
-          </table>
-        </div>
+        const positiveKeywords = ["ótimo", "excelente", "rápido", "resolveu", "atenciosa", "atencioso", "parabéns", "eficiente", "nota 10", "prestativo", "bom", "perfeito", "competente", "satisfeito", "gentil", "empati", "solicita", "melhores"];
+        const negativeKeywords = ["demora", "demorado", "lento", "sem net", "caindo", "não resolveu", "horrível", "grosso", "lerdo", "péssimo", "insatisf", "oscilando", "travando", "porcaria", "cancelado", "problema não resolvido", "ocupado"];
 
-        <div id="noResults" class="no-results" style="display:none">Nenhum resultado encontrado.</div>
-      </section>
+        let analysisResults = [];
+        let positiveCount = 0;
+        let negativeCount = 0;
+        let neutralCount = 0;
+        const totalComments = comments.length;
+        let currentIndex = 0;
+        const carouselInterval = 5000;
 
-      <aside class="panel">
-        <div class="stats">
-          <div class="stat-row"><div class="small">Regiões totais</div><div id="uniqueRegions" class="small">—</div></div>
-          <div class="stat-row"><div class="small">Bairros totais</div><div id="uniqueBairros" class="small">—</div></div>
-          <div class="stat-row"><div class="small">Técnicos diferentes</div><div id="uniqueTecnicos" class="small">—</div></div>
-        </div>
+        function analyzeSentiment(comment) {
+            const lowerComment = comment.toLowerCase();
+            let score = 0;
+            positiveKeywords.forEach(keyword => { if (lowerComment.includes(keyword)) score += 1; });
+            negativeKeywords.forEach(keyword => { if (lowerComment.includes(keyword)) score -= 1; });
+            if (score > 0) return 'positive';
+            if (score < 0) return 'negative';
+            return 'neutral';
+        }
 
-        <div style="margin-top:12px">
-          <label class="small" style="display:block;margin-bottom:6px;color:var(--muted)">Dicas</label>
-          <div class="small" style="color:var(--muted);line-height:1.4">
-            • Digite parte do nome (ex: "Campo", "Pompeia", "Maikon").<br/>
-            • Use "Ver: Tabela" para copiar facilmente resultados.<br/>
-            • Registros sem bairro são exibidos com "-" no campo Bairro.
+        function prepareData() {
+            comments.forEach((comment, index) => {
+                const sentiment = analyzeSentiment(comment);
+                analysisResults.push({
+                    text: comment,
+                    sentiment: sentiment,
+                    author: `CLIENTE #${index + 1}`,
+                    classification: sentiment === 'positive' ? 'POSITIVO' : (sentiment === 'negative' ? 'NEGATIVO' : 'NEUTRO')
+                });
 
-<!-- AVISO IMPORTANTE -->
-<div style="
-  margin-top:10px;
-  padding:10px;
-  border-radius:8px;
-  background:rgba(255,0,0,0.12);
-  border:1px solid rgba(255,0,0,0.35);
-  color:#ff4d4d;
-  font-weight:700;
-  font-size:14px;
-">
-  ⚠ ATENÇÃO: Verifique sempre se o cliente é migrado de outra empresa!  
-</div>
+                if (sentiment === 'positive') positiveCount++;
+                else if (sentiment === 'negative') negativeCount++;
+                else neutralCount++;
+            });
+            updateMetrics();
+        }
 
-          </div>
-        </div>
-      </aside>
-    </main>
+        function updateMetrics() {
+            const positivePercentage = (positiveCount / totalComments) * 100;
 
-    <footer>
-      Gerador de busca • Base carregada localmente
-    </footer>
-  </div>
+            document.getElementById('total-comments').textContent = totalComments;
+            document.getElementById('positive-count').textContent = positiveCount;
+            document.getElementById('negative-count').textContent = negativeCount;
+            document.getElementById('neutral-count').textContent = neutralCount;
 
+            const percentageValueElement = document.getElementById('positive-percentage');
+            percentageValueElement.textContent = `${positivePercentage.toFixed(1)}%`;
+        }
 
-<script>
-// ---------- DADOS (cole sua lista JSON inteira aqui) ----------
-const rawData = [
-  {"Região":"São José dos Pinhais","Bairro":"Cotia","Técnico-Responsavel":"Douglas"},
-  {"Região":"Campo Largo","Bairro":"São Luiz","Técnico-Responsavel":"Maikon Gurski"},
-  {"Região":"Campo Largo","Bairro":"Pompeia","Técnico-Responsavel":"Maikon Gurski"},
-  {"Região":"Campo Largo","Bairro":"Cercadinho","Técnico-Responsavel":"Maikon Gurski"},
-  {"Região":"Campo Largo","Bairro":"Miqueleto","Técnico-Responsavel":"Maikon Gurski"},
-  {"Região":"Almirante Tamandaré","Bairro":"Mato Dentro","Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Curitiba","Bairro":"Lamenha Pequena","Técnico-Responsavel":"Pamela Christina"},
-  {"Região":"Curitiba","Bairro":"Butiatuvinha","Técnico-Responsavel":"Pamela Christina"},
-  {"Região":"Campina Grande do Sul","Bairro":"Araçatuba","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Campina Grande Do Sul","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Cerme","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Colônia Faria","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Jardim Eugenia Maria","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Jardim Florida","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Jardim Graciosa","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Jardim Jacob Ceccon","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Jardim Nesita","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Jardim Nezita","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Jardim Paulista","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Palmitalzinho","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Roseira (CGS)","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Timbu Velho","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Volta Grande","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Canguiri","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Palmares","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Guaraituba (CGS)","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Jardim Monte Líbano","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Jardim Primavera","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Piraquara","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Planta Bosque Centen","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Planta Vera Cruz","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Vila Nova","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Caraguata","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Centro","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Colônia Maria Jose","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Jardim menino de Deus","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Jardim Orestes Tha","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Jardim Patrícia","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Jardim Sao Pedro","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Nossa Sra. Das Graças","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Quatro Barras","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"São Pedro","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Campina Grande do Sul","Bairro":"Vila Nossa Sra. De Fátima","Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Almirante Tamandaré","Bairro":"Águas Fervidas","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Arruda","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Butiatumirim","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Capivari","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Cercadinho","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Cercadinho","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Osasco","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Roça Grande","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Santa Gema","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"São Gabriel","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Sapopema","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Ahú","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Barreirinha","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Cachoeira","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Barreirinha","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Vila Formosa","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Jd. Apucarana","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Campina da Arruda","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"São Venancio","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Jd Roma","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"São Jorge","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"VILA GRECIA","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Jd Novo Horizonte","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Vila Prado","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Jd Josiane","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Jd Monte Santo","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Jd Campo Verde","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Jd Paraiso","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Jd Santa Maria","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Botiatuba","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Jd Buenos aires","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Jd São Carlos","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Jd Silvana","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Gianini","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Lamenha Grande","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Bonfim","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Tanguá","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Abranches","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Taboão","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Jd Tatiana","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Sumidoro","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Restinga seca","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Macieira","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Campina dos pintos","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"itajacuru","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Colonia Antonio Prado","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"EMBU","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Santa Cândida","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"São João","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Bacaetava","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Campestre","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Morro Grande","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Vila Pedroso","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Alto maracanã","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Atuba","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Campo Alto","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Centro","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Das Graças","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Fátima","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Guaraituba","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Guarani","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim Cristina","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim das Gracas","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim Eucaliptos II","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim Marambaia","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim Monza","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim Palmares","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim Paloma","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim Planalto","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim Santa Monica","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim Viviane","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Maracanã","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Maria do Rosario","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Mauá","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"monte castelo","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Monza","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Palmital","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Parque dos Lagos","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Planta Bom Jesus","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Planta Palmital","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Rincão","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Rio Verde","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Roseira","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Vila Alto da Cruz II","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Vila Esperança","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Vila Florestal Grajau","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Vila Guaraci","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Vila Luis Baron","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Vila Palmital","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Vila São José","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Vila Vale Verde","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Vila Yara","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Bacaetava","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Alto da Gloria","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Atuba","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Bacacheri","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Bairro Alto","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Boa Vista","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Cabral","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Campo Pequeno","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Capão da Imbuia","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Juvevê","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Tarumã","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Tingui","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Alphaville","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Alphaville Graciosa","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Alto Tarumã","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Atuba","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Centro","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Conj. Res. Inocoop","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Emiliano Perneta","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Graciosa","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim Amélia","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim Cláudia","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim Pedro Demerco","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Maria Antonieta","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Pineville","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Vargem Grande","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Weissópolis","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Imbuial","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Poço Negro","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Itajacuru","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Santa Terezinha","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Lapa","Bairro":null,"Técnico-Responsavel":"Carlos William Loures"},
-  {"Região":"Fazenda Rio Grande","Bairro":null,"Técnico-Responsavel":"Douglas"},
-  {"Região":"Piên","Bairro":null,"Técnico-Responsavel":"Geovan"},
-  {"Região":"Tijucas","Bairro":null,"Técnico-Responsavel":"Geovan"},
-  {"Região":"Agudos","Bairro":null,"Técnico-Responsavel":"Geovan"},
-  {"Região":"Migrados Lyke Net","Bairro":null,"Técnico-Responsavel":"Jefferson Torres"},
-  {"Região":"Campina Grande do Sul","Bairro":null,"Técnico-Responsavel":"Camilla Gaspar"},
-  {"Região":"Bocaiuva do Sul","Bairro":null,"Técnico-Responsavel":"Juliano de Jesus Moreira"},
-  {"Região":"Rio Branco","Bairro":null,"Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Itaperuçu","Bairro":null,"Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Tranqueira","Bairro":null,"Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Areias","Bairro":null,"Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Campo Grande","Bairro":null,"Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Mina de Ferro","Bairro":null,"Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Campo Magro","Bairro":null,"Técnico-Responsavel":"Pamlea Christina"},
-  {"Região":"São José dos Pinhais","Bairro":null,"Técnico-Responsavel":"Weliton"},
-  {"Região":"Araucaria - Capela Velha","Bairro":null,"Técnico-Responsavel":"Jefferson Torres"},
-  {"Região":"Cic","Bairro":null,"Técnico-Responsavel":"Jefferson Torres"},
-  {"Região":"Tatuquara","Bairro":null,"Técnico-Responsavel":"Jefferson Torres"},
-  {"Região":"Campo Largo","Bairro":"Keli Cristina","Técnico-Responsavel":"Jefferson Torres"},
-  {"Região":"Campo Largo","Bairro":"Vila Gilcy","Técnnico-Responsavel":"Jefferson Torres"},
-  {"Região":"Campo Largo","Bairro":"Vila Torres","Técnico-Responsavel":"Jefferson Torres"},
-  {"Região":"Campo Largo","Bairro":"Vila David Antônio","Técnico-Responsavel":"Jefferson Torres"},
-  {"Região":"Campo Largo","Bairro":"Vila Dona Fina","Técnico-Responsavel":"Jefferson Torres"},
-  {"Região":"Campo Largo","Bairro":"Vila Dea","Técnico-Responsavel":"Jefferson Torres"},
-  {"Região":"Campo Largo","Bairro":"Riviera","Técnico-Responsavel":"Jefferson Torres"},
-  {"Região":"Campo Largo","Bairro":"Guarany","Técnico-Responsavel":"Pamela Christina"},
-  {"Região":"Campo Largo","Bairro":"Vila Dom Pedro II","Técnico-Responsavel":"Pamela Christina"},
-  {"Região":"Campo Largo","Bairro":"Bateias","Técnico-Responsavel":"Pamela Christina"},
-  {"Região":"Campo Largo","Bairro":"Figueiredo","Técnico-Responsavel":"Pamela Christina"},
-{"Região":"Contenda","Bairro":"Campestre","Técnico-Responsavel":"André Carlos Batista"},
-{"Região":"Migrados Olá Net - São José dos Pinhais","Bairro":"null","Técnico-Responsavel":"Weliton Antunes"},
-{"Região":"Lyke Net","Bairro":"Caximba","Técnico-Responsavel":"Douglas"},
+        function showNextComment() {
+            if (analysisResults.length === 0) return;
 
-{"Região":"Contenda","Bairro":"Campina das Palmeiras","Técnico-Responsavel":"André Carlos Batista"},
-{"Região":"Contenda","Bairro":"Campo Thomaz (alguns locais)","Técnico-Responsavel":"André Carlos Batista"},
-{"Região":"Contenda","Bairro":"Capinzal","Técnico-Responsavel":"André Carlos Batista"},
-{"Região":"Contenda","Bairro":"Capoeira Grande","Técnico-Responsavel":"André Carlos Batista"},
-{"Região":"Contenda","Bairro":"Catanduvas","Técnico-Responsavel":"André Carlos Batista"},
-{"Região":"Contenda","Bairro":"Costeira","Técnico-Responsavel":"André Carlos Batista"},
-{"Região":"Contenda","Bairro":"Feixo","Técnico-Responsavel":"André Carlos Batista"},
-{"Região":"Contenda","Bairro":"Itaperubá","Técnico-Responsavel":"André Carlos Batista"},
-{"Região":"Contenda","Bairro":"Lagoa Grande","Técnico-Responsavel":"André Carlos Batista"},
-{"Região":"Contenda","Bairro":"Lagoão","Técnico-Responsavel":"André Carlos Batista"},
-{"Região":"Contenda","Bairro":"Lot. dos Cordeiro","Técnico-Responsavel":"André Carlos Batista"},
-{"Região":"Contenda","Bairro":"Loteamento São João","Técnico-Responsavel":"André Carlos Batista"},
-{"Região":"Contenda","Bairro":"Mariental","Técnico-Responsavel":"André Carlos Batista"},
-{"Região":"Contenda","Bairro":"Mato Dentro","Técnico-Responsavel":"André Carlos Batista"},
-{"Região":"Contenda","Bairro":"Passo da Gralha","Técnico-Responsavel":"André Carlos Batista"},
-{"Região":"Contenda","Bairro":"Rio do Cacho","Técnico-Responsavel":"André Carlos Batista"},
-{"Região":"Contenda","Bairro":"Rincão","Técnico-Responsavel":"André Carlos Batista"},
-{"Região":"Contenda","Bairro":"Serrinha","Técnico-Responsavel":"André Carlos Batista"},
-{"Região":"Contenda","Bairro":"Thomaz Coelho","Técnico-Responsavel":"André Carlos Batista"},
-{"Região":"Contenda","Bairro":"Vl Furmann","Técnico-Responsavel":"André Carlos Batista"},
-{"Região":"Contenda","Bairro":"Vl Sossego","Técnico-Responsavel":"André Carlos Batista"},
+            const data = analysisResults[currentIndex];
+            const carousel = document.getElementById('comment-carousel');
+            
+            const currentComment = carousel.querySelector('.comment-box');
+            if (currentComment) {
+                currentComment.style.opacity = 0;
+            }
+            
+            const commentDiv = document.createElement('div');
+            commentDiv.className = `comment-box ${data.sentiment}`;
+            commentDiv.innerHTML = `
+                <span class="comment-text">${data.text}</span>
+                <span class="comment-author">POR: ${data.author} | CLASSIFICAÇÃO: ${data.classification}</span>
+            `;
 
-  {"Região":"Migrados Opta","Bairro":null,"Técnico-Responsavel":"Bruno Mocelin"},
-  {"Região":"Migrados Vai Net","Bairro":null,"Técnico-Responsavel":"Gilberto Junior"},
-  {"Região":"Migrados Olá Net","Bairro":null,"Técnico-Responsavel":"Gilberto Junior"},
-{"Região":"Migrados EG7","Bairro":null,"Técnico-Responsavel":"Gilberto Junior"},
-{"Região":"Fazendinha","Bairro":null,"Técnico-Responsavel":"Douglas"},
-{"Região":"Migrados Nota10","Bairro":null,"Técnico-Responsavel":"Bruno Mocelin"},
+            setTimeout(() => {
+                carousel.innerHTML = '';
+                carousel.appendChild(commentDiv);
+                
+                setTimeout(() => {
+                    commentDiv.style.opacity = 1;
+                }, 10);
+            }, 300);
+            
+            currentIndex = (currentIndex + 1) % totalComments;
+        }
 
-];
-// ---------- FIM DOS DADOS ----------
+        document.addEventListener('DOMContentLoaded', () => {
+            prepareData();
+            showNextComment(); 
+            setInterval(showNextComment, carouselInterval); 
+        });
 
-// Normaliza e mapeia chaves (garante consistência)
-const data = rawData.map(item => {
-  // possible keys variations -> map to standardized keys
-  const reg = item['Região'] ?? item['Regiao'] ?? item['regiao'] ?? item['region'] ?? '';
-  const bairro = item['Bairro'] ?? item['bairro'] ?? item['Bairros'] ?? null;
-  // tecnico may appear as 'Técnico-Responsavel' or 'Técnico-Responsavel' or 'Técnico-Responsavel' variations
-  const tecnico = item['Técnico-Responsavel'] ?? item['Técnico-Responsável'] ?? item['Técnico Responsavel'] ?? item['Tecnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico'] ?? item['TécnicoResponsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? item['Técnico-Responsavel'] ?? '';
-  // fallback: try to read any key that contains 'tec' or 'técn'
-  let tecnicoFinal = tecnico;
-  if(!tecnicoFinal){
-    for(const k of Object.keys(item)){
-      if(/tec|t[eé]cnico|responsavel|responsável/i.test(k) && item[k]) { tecnicoFinal = item[k]; break; }
-    }
-  }
-  return { region: String(reg).trim(), bairro: bairro === null ? null : String(bairro).trim(), tecnico: String(tecnicoFinal).trim() };
-});
-
-// Elements
-const searchInput = document.getElementById('search');
-const cardsContainer = document.getElementById('cardsContainer');
-const tableBody = document.getElementById('tableBody');
-const noResultsEl = document.getElementById('noResults');
-const countEl = document.getElementById('count');
-const uniqueRegionsEl = document.getElementById('uniqueRegions');
-const uniqueBairrosEl = document.getElementById('uniqueBairros');
-const uniqueTecnicosEl = document.getElementById('uniqueTecnicos');
-const viewToggle = document.getElementById('viewToggle');
-const tableContainer = document.getElementById('tableContainer');
-const clearBtn = document.getElementById('clearBtn');
-
-let showTable = false;
-
-// Stats
-function updateStats(){
-  const regions = new Set(data.filter(d=>d.region).map(d=>d.region));
-  const bairros = new Set(data.filter(d=>d.bairro).map(d=>d.bairro));
-  const tecnicos = new Set(data.filter(d=>d.tecnico).map(d=>d.tecnico));
-  uniqueRegionsEl.textContent = regions.size;
-  uniqueBairrosEl.textContent = bairros.size;
-  uniqueTecnicosEl.textContent = tecnicos.size;
-}
-updateStats();
-
-// highlight helper
-function highlight(text, q){
-  if(!q) return escapeHtml(text || '');
-  const t = (text||'').toString();
-  const qi = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const re = new RegExp('('+qi+')','ig');
-  return escapeHtml(t).replace(re, '<span class="highlight">$1</span>');
-}
-function escapeHtml(s){ return s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
-
-// render functions
-function renderCards(items, q){
-  cardsContainer.innerHTML = '';
-  if(items.length===0){
-    noResultsEl.style.display='block';
-    return;
-  }
-  noResultsEl.style.display='none';
-  items.forEach(it=>{
-    const card = document.createElement('div');
-    card.className = 'card';
-    const regionHtml = highlight(it.region || '-', q);
-    const bairroHtml = highlight(it.bairro || '-', q);
-    const tecnicoHtml = highlight(it.tecnico || '-', q);
-    card.innerHTML = `<h3>${tecnicoHtml}</h3>
-      <div class="meta"><div>Região: ${regionHtml}</div><div>Bairro: ${bairroHtml}</div></div>`;
-    cardsContainer.appendChild(card);
-  });
-}
-
-function renderTable(items){
-  tableBody.innerHTML = '';
-  if(items.length===0){ noResultsEl.style.display='block'; return; }
-  noResultsEl.style.display='none';
-  for(const it of items){
-    const tr = document.createElement('tr');
-    const r = escapeHtml(it.region || '-');
-    const b = escapeHtml(it.bairro || '-');
-    const t = escapeHtml(it.tecnico || '-');
-    tr.innerHTML = `<td>${r}</td><td>${b}</td><td>${t}</td>`;
-    tableBody.appendChild(tr);
-  }
-}
-
-// search
-function performSearch(){
-  const q = searchInput.value.trim().toLowerCase();
-  // if empty, show all
-  let results = data.filter(d=>{
-    if(!q) return true;
-    const matchesRegion = d.region && d.region.toLowerCase().includes(q);
-    const matchesBairro = d.bairro && d.bairro.toLowerCase().includes(q);
-    const matchesTec = d.tecnico && d.tecnico.toLowerCase().includes(q);
-    return matchesRegion || matchesBairro || matchesTec;
-  });
-
-  countEl.textContent = results.length;
-
-  // default view: cards
-  if(showTable){
-    tableContainer.style.display='block';
-    renderTable(results);
-  } else {
-    tableContainer.style.display='none';
-    renderCards(results, q);
-  }
-}
-
-// events
-searchInput.addEventListener('input', performSearch);
-viewToggle.addEventListener('click', ()=>{
-  showTable = !showTable;
-  viewToggle.textContent = showTable ? 'Ver: Tabela' : 'Ver: Cards';
-  // toggle text is inverted intentionally to reflect action (you can change)
-  performSearch();
-});
-clearBtn.addEventListener('click', ()=>{
-  searchInput.value='';
-  performSearch();
-});
-
-// initial render
-performSearch();
-
-</script>
+    </script>
 </body>
 </html>
