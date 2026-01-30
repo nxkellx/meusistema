@@ -162,401 +162,415 @@
 // ---------- DADOS (cole sua lista JSON inteira aqui) ----------
 const rawData = [
 [
-  {"Região":"Colombo","Bairro":"Alto Maracanã","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Atuba","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Campo Alto","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Centro","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Das Graças","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Fátima","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Guaraituba","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Guarani","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim Cristina","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim das Graças","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim Eucaliptos II","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim Marambaia","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim Monza","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim Palmares","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim Paloma","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim Planalto","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim Santa Mônica","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Jardim Viviane","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Maracanã","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Maria do Rosário","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Monte Castelo","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Monza","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Parque dos Lagos","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Planta Bom Jesus","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Planta Palmital","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Rincão","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Rio Verde","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Roseira","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Santa Cândida","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Vila Alto da Cruz II","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Vila Esperança","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Vila Florestal Grajaú","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Vila Guaraci","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Vila Luís Baron","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Vila Palmital","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Vila São José","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Vila Vale Verde","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Colombo","Bairro":"Vila Yara","Técnico-Responsavel":"Thiago Kalva"},
-
-  {"Região":"Curitiba","Bairro":"Alto da Glória","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Curitiba","Bairro":"Atuba","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Curitiba","Bairro":"Bacacheri","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Curitiba","Bairro":"Bairro Alto","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Curitiba","Bairro":"Boa Vista","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Curitiba","Bairro":"Cabral","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Curitiba","Bairro":"Campo Pequeno","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Curitiba","Bairro":"Capão da Imbuia","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Curitiba","Bairro":"Juvevê","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Curitiba","Bairro":"Tarumã","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Curitiba","Bairro":"Tingui","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Curitiba","Bairro":"Ahú","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Curitiba","Bairro":"Barreirinha","Técnico-Responsavel":"Thiago Kalva"},
-
-  {"Região":"Almirante Tamandaré","Bairro":"Bonfim","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Botiatuba","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Cachoeira","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Campina da Arruda","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Campo Grande","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Centro","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Colônia Antônio Prado","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Colônia Santa Gabriela","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Colônia São Venâncio","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Humaitá","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Jardim Tatiana","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Lamenha Grande","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Lamenha Pequena","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Mato Dentro","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Restinga Seca","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Sumidouro","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Tanguá","Técnico-Responsavel":"Thiago Kalva"},
-  {"Região":"Almirante Tamandaré","Bairro":"Tranqueira","Técnico-Responsavel":"Thiago Kalva"}
+  [
+  {
+    "gestor": "Thiago Kalva",
+    "regiao": "Colombo",
+    "bairros": [
+      "Alto Maracanã","Atuba","Campo Alto","Centro","Das Graças","Fátima",
+      "Guaraituba","Guarani","Jardim Cristina","Jardim das Graças",
+      "Jardim Eucaliptos II","Jardim Marambaia","Jardim Monza",
+      "Jardim Palmares","Jardim Paloma","Jardim Planalto",
+      "Jardim Santa Mônica","Jardim Viviane","Maracanã",
+      "Maria do Rosário","Monte Castelo","Monza","Parque dos Lagos",
+      "Planta Bom Jesus","Planta Palmital","Rincão","Rio Verde",
+      "Roseira","Santa Cândida","Vila Alto da Cruz II","Vila Esperança",
+      "Vila Florestal Grajaú","Vila Guaraci","Vila Luís Baron",
+      "Vila Palmital","Vila São José","Vila Vale Verde","Vila Yara",
+      "Águas Fervidas","Arruda","Butiatumirim","Cercadinho",
+      "Imbuial","Osasco","Roça Grande","Santa Gema",
+      "São Gabriel","Sapopema"
+    ]
+  },
+  {
+    "gestor": "Thiago Kalva",
+    "regiao": "Curitiba",
+    "bairros": [
+      "Alto da Glória","Atuba","Bacacheri","Bairro Alto","Boa Vista",
+      "Cabral","Campo Pequeno","Capão da Imbuia","Juvevê",
+      "Tarumã","Tingui","Ahú","Barreirinha"
+    ]
+  },
+  {
+    "gestor": "Thiago Kalva",
+    "regiao": "Almirante Tamandaré",
+    "bairros": [
+      "Bonfim","Botiatuba","Cachoeira","Campina do Arruda",
+      "Campo Grande","Centro","Colônia Antônio Prado",
+      "Colônia Santa Gabriela","Colônia São Venâncio","Humaitá",
+      "Jardim Água Boa","Jardim Areias","Jardim Alvorada",
+      "Jardim Alvorada II","Jardim Anita Garibaldi","Jardim Apucarana",
+      "Jardim Bela Vista","Jardim Benfica","Jardim Campo Verde",
+      "Jardim Colonial","Jardim das Oliveiras","Jardim do Norte",
+      "Jardim Dona Luiza","Jardim Kokot","Jardim Marambaia",
+      "Jardim Monte Santo","Jardim Naturama","Jardim Rafaela",
+      "Jardim Roma","Jardim Santo Antônio","Jardim São Domingos",
+      "Jardim São José","Jardim Tamboara","Jardim Tatiana",
+      "Lamenha Grande","Lamenha Pequena","Loteamento Chico Mendes",
+      "Loteamento Industrial","Loteamento Maria Cláudia",
+      "Loteamento Marinoni","Loteamento Montparnasse",
+      "Loteamento Nova Morada","Mato Dentro","Morro Azul",
+      "Pacotuba","Parque São Jorge","Planta Almirante",
+      "Restinga Seca","São Felipe","São Miguel","Sumidouro",
+      "Tanguá","Tranqueira","Vila Alto Pinheiros","Vila Bela Vista",
+      "Vila da Glória","Vila Emerentina","Vila Otília","Vila Rachel",
+      "Vila Santa Terezinha","Vila São Pedro","Vila Tefé"
+    ]
+  },
 
   {
-    "Região": "Campina Grande do Sul",
-    "Bairro": null,
-    "Técnico-Responsavel": "Camilla Gaspar"
+    "gestor": "Camilla Gaspar",
+    "regiao": "Campina Grande do Sul",
+    "bairros": ["Todos"]
   },
   {
-    "Região": "Quatro Barras",
-    "Bairro": null,
-    "Técnico-Responsavel": "Camilla Gaspar"
+    "gestor": "Camilla Gaspar",
+    "regiao": "Quatro Barras",
+    "bairros": ["Todos"]
   },
   {
-    "Região": "Colombo",
-    "Bairro": "Canguiri",
-    "Técnico-Responsavel": "Camilla Gaspar"
+    "gestor": "Camilla Gaspar",
+    "regiao": "Colombo",
+    "bairros": [
+      "Canguiri","Zumbi","Santa Mônica","Jardim Paraná",
+      "Nossa Senhora das Graças","Mauá","Palmares"
+    ]
+  },
+
+  {
+    "gestor": "Gilberto Junior",
+    "regiao": "Pinhais",
+    "bairros": ["Todos"]
   },
   {
-    "Região": "Colombo",
-    "Bairro": "Zumbi",
-    "Técnico-Responsavel": "Camilla Gaspar"
+    "gestor": "Gilberto Junior",
+    "regiao": "Piraquara",
+    "bairros": ["Todos"]
+  },
+
+  {
+    "gestor": "Weliton Antunes",
+    "regiao": "São José dos Pinhais",
+    "bairros": ["Todos exceto Agaraú e Cotia"]
+  },
+
+  {
+    "gestor": "Vinicius Cichon",
+    "regiao": "Almirante Tamandaré",
+    "bairros": [
+      "Areias","São João Batista","Tranqueira","Campo Grande",
+      "Capivara dos Manfron","Jardim Dona Belizária",
+      "Maria Luiza","Mato Dentro","Morro Azul","Pacotuba",
+      "Teotônio","Venda Velha","Jardim Tranqueira"
+    ]
   },
   {
-    "Região": "Colombo",
-    "Bairro": "Santa Mônica",
-    "Técnico-Responsavel": "Camilla Gaspar"
+    "gestor": "Vinicius Cichon",
+    "regiao": "Itaperuçu",
+    "bairros": ["Todos"]
   },
   {
-    "Região": "Colombo",
-    "Bairro": "Jardim Paraná",
-    "Técnico-Responsavel": "Camilla Gaspar"
+    "gestor": "Vinicius Cichon",
+    "regiao": "Rio Branco do Sul",
+    "bairros": ["Todos"]
   },
   {
-    "Região": "Colombo",
-    "Bairro": "Nossa Senhora das Graças",
-    "Técnico-Responsavel": "Camilla Gaspar"
-  },
-  {
-    "Região": "Colombo",
-    "Bairro": "Mauá",
-    "Técnico-Responsavel": "Camilla Gaspar"
-  },
-  {
-    "Região": "Colombo",
-    "Bairro": "Palmares",
-    "Técnico-Responsavel": "Camilla Gaspar"
+    "gestor": "Vinicius Cichon",
+    "regiao": "Colombo",
+    "bairros": ["Campestre","Campina dos Pintos"]
   }
 
+  ,
   {
-    "Região": "Pinhais",
-    "Bairro": null,
-    "Técnico-Responsavel": "Gilberto Junior"
+    "gestor": "Bruno Mocelin",
+    "regiao": "Curitiba - Pinheirinho",
+    "bairros": [
+      "Novo Mundo",
+      "Sítio Cercado",
+      "Capão Raso",
+      "Boqueirão",
+      "Alto do Boqueirão",
+      "CIC - Nossa Senhora da Luz"
+    ]
+  },
+
+  {
+    "gestor": "Douglas Eduardo",
+    "regiao": "Fazenda Rio Grande",
+    "bairros": [
+      "Estados 1",
+      "Estados 2",
+      "Eucaliptos 1",
+      "Eucaliptos 2",
+      "Gralha Azul",
+      "Iguaçu 1",
+      "Iguaçu 2",
+      "Nações",
+      "Pioneiros",
+      "Santa Terezinha",
+      "Parque Industrial",
+      "Santa Maria",
+      "Jardim Veneza"
+    ]
   },
   {
-    "Região": "Piraquara",
-    "Bairro": null,
-    "Técnico-Responsavel": "Gilberto Junior"
+    "gestor": "Douglas Eduardo",
+    "regiao": "São José dos Pinhais",
+    "bairros": [
+      "Agaraú",
+      "Cotia"
+    ]
+  },
+  {
+    "gestor": "Douglas Eduardo",
+    "regiao": "Araucária Rural",
+    "bairros": [
+      "Palmital",
+      "Tietê"
+    ]
+  },
+  {
+    "gestor": "Douglas Eduardo",
+    "regiao": "Quitandinha",
+    "bairros": [
+      "Vista Alegre",
+      "Vila Nova",
+      "Parque Industrial",
+      "Moreiras",
+      "Engenho Velho",
+      "Centro",
+      "Campina",
+      "Campina 1",
+      "Campina 2",
+      "Vila Prado",
+      "Roseira",
+      "Pangaré",
+      "Lagoa Verde",
+      "Cerro Verde",
+      "Campina dos Pretos",
+      "Bom Jesus"
+    ]
+  },
+  {
+    "gestor": "Douglas Eduardo",
+    "regiao": "Curitiba",
+    "bairros": [
+      "Caximba"
+    ]
+  },
+
+  {
+    "gestor": "Pamela Christina",
+    "regiao": "Campo Magro",
+    "bairros": [
+      "Água Boa",
+      "Boa Vista",
+      "Centro",
+      "Jardim Bom Pastor",
+      "Jardim Novos Horizontes",
+      "Jardim Viviane"
+    ]
+  },
+  {
+    "gestor": "Pamela Christina",
+    "regiao": "Campo Largo",
+    "bairros": [
+      "Bateias"
+    ]
+  },
+  {
+    "gestor": "Pamela Christina",
+    "regiao": "Curitiba",
+    "bairros": [
+      "São Braz",
+      "Santa Felicidade",
+      "Butiatuvinha",
+      "Orleans"
+    ]
+  },
+  {
+    "gestor": "Pamela Christina",
+    "regiao": "Almirante Tamandaré",
+    "bairros": [
+      "Lamenha Pequena",
+      "Lamenha Grande",
+      "Botiatuba",
+      "Tanguá",
+      "Planta Almirante",
+      "Tanguá Solar",
+      "Marinoni",
+      "Loteamento Montparnasse"
+    ]
+  },
+
+  {
+    "gestor": "Geovan Beirão",
+    "regiao": "Tijucas do Sul",
+    "bairros": [
+      "Campina",
+      "Campo Alto",
+      "Várzea",
+      "Tabatinga"
+    ]
+  },
+  {
+    "gestor": "Geovan Beirão",
+    "regiao": "São José dos Pinhais",
+    "bairros": [
+      "Contenda",
+      "Córrego Fundo",
+      "Roça Velha",
+      "Malhada",
+      "Saltinho da Malhada",
+      "Inhaíva",
+      "São Marcos",
+      "Jardim Aquários",
+      "Jardim Carmem",
+      "Del Rei",
+      "Campo Largo da Roseira",
+      "Campina do Taquaral",
+      "Cachoeira",
+      "Arujá",
+      "Colônia Zacarias",
+      "Agaraú",
+      "Campestre da Faxina",
+      "Portãozinho",
+      "Fazenda Rio Grande",
+      "Centro São José",
+      "Reserva dos Pinhais",
+      "San Marino - Manacás",
+      "Saint Michel",
+      "Rio de Una",
+      "Aristocrata",
+      "Cidade Jardim",
+      "Barro Preto",
+      "Bom Jesus",
+      "Boneca do Iguaçu",
+      "Braga",
+      "Colônia Marcelino",
+      "Colônia Rio Grande",
+      "Cotia",
+      "Cruzeiro",
+      "Guaraituba",
+      "Guatupê",
+      "Itália",
+      "Jurema",
+      "Minguava",
+      "Ouro Fino",
+      "Parque da Fonte",
+      "Pedro Moro",
+      "Rio Pequeno",
+      "Roseira de Campo Largo",
+      "Santo Antônio",
+      "Silveira da Mota",
+      "São Cristóvão",
+      "São Pedro Matulão",
+      "Morro Vermelho",
+      "Colono",
+      "Xaxim",
+      "Ambrosios",
+      "Flores",
+      "Fagundes",
+      "Centro",
+      "Cascatinha",
+      "Lagoa",
+      "Lagoinha",
+      "Campestre",
+      "São João",
+      "Ribeirão do Meio",
+      "Ribeirão do Mel",
+      "Postinho",
+      "Vila Rural",
+      "Bosque da Saúde",
+      "Vila Cubas 1",
+      "Vila Cubas 2",
+      "Barbacuá",
+      "Anne Louise",
+      "Jardim das Oliveiras",
+      "Campo das Flores",
+      "Contenda das Flores",
+      "Fazendinha",
+      "Gama até a Igreja",
+      "Panagro",
+      "Rincão",
+      "Rio Abaixo",
+      "Rodeio",
+      "Salto da Boa Vista",
+      "Vossoroca",
+      "Campo Comprido"
+    ]
+  },
+
+  {
+    "gestor": "Carlos William Dias Loures",
+    "regiao": "Lapa",
+    "bairros": [
+      "Johanesdorf",
+      "Passa Dois",
+      "Piripau",
+      "Colônia Stinglin",
+      "Palmital de Baixo",
+      "Pedra Lisa",
+      "Rio da Areia",
+      "Rio da Várzea",
+      "Santo Amaro",
+      "São Bento",
+      "São João do Caíva",
+      "São Lucas",
+      "Água Azul",
+      "Alves Cardoso",
+      "Barra dos Melos",
+      "Bonito",
+      "Butiá",
+      "Campina",
+      "Canoeiros",
+      "Capão Bonito",
+      "Carqueja",
+      "Cento e Doze",
+      "Centro",
+      "Colônia Municipal",
+      "Colônia Restinga",
+      "Contestado",
+      "Faxinal dos Castilhos",
+      "Faxinal dos Correias",
+      "Feixo do Botiatuva",
+      "Mato Preto",
+      "Núcleo Leiteiro"
+    ]
+  },
+
+  {
+    "gestor": "André Carlos Batista",
+    "regiao": "Contenda",
+    "bairros": [
+      "Campestre",
+      "Campina das Palmeiras",
+      "Campo Thomaz",
+      "Capinzal",
+      "Capoeira Grande",
+      "Catanduvas",
+      "Feixo",
+      "Itaperubá",
+      "Lagoa Grande",
+      "Loteamento dos Cordeiro",
+      "Loteamento São João",
+      "Mariental",
+      "Mato Dentro",
+      "Passo da Gralha",
+      "Rio do Cacho",
+      "Serrinha",
+      "Vila Furmann",
+      "Vila Sossego",
+      "02 de Maio",
+      "João Franco",
+      "José Mosson",
+      "Otávio Alfredo da Silveira",
+      "Eusébio Hammerschmidt"
+    ]
   }
-
-  {
-    "Região": "São José dos Pinhais",
-    "Bairro": null,
-    "Técnico-Responsavel": "Weliton Antunes"
-  }
-
-  {"Região":"Almirante Tamandaré","Bairro":"Areais","Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Almirante Tamandaré","Bairro":"São João Batista","Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Almirante Tamandaré","Bairro":"Tranqueira","Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Almirante Tamandaré","Bairro":"Jardim Maria Luiza","Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Almirante Tamandaré","Bairro":"Campo Grande","Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Almirante Tamandaré","Bairro":"Capivara dos Manfron","Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Almirante Tamandaré","Bairro":"Jardim Dona Belizária","Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Almirante Tamandaré","Bairro":"Maria Luiza","Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Almirante Tamandaré","Bairro":"Mato Dentro","Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Almirante Tamandaré","Bairro":"Jardim Mozacal","Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Almirante Tamandaré","Bairro":"Morro Azul","Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Almirante Tamandaré","Bairro":"Pacotuba","Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Almirante Tamandaré","Bairro":"Teotônio","Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Almirante Tamandaré","Bairro":"Jardim Tranqueira","Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Almirante Tamandaré","Bairro":"Venda Velha","Técnico-Responsavel":"Vinicius Cichon"},
-
-  {"Região":"Itaperuçu","Bairro":null,"Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Rio Branco do Sul","Bairro":null,"Técnico-Responsavel":"Vinicius Cichon"},
-
-  {"Região":"Colombo","Bairro":"Campestre","Técnico-Responsavel":"Vinicius Cichon"},
-  {"Região":"Colombo","Bairro":"Campina dos Pintos","Técnico-Responsavel":"Vinicius Cichon"}
-
-
-  {
-    "Região": "Pinheirinho",
-    "Bairro": "Novo Mundo",
-    "Técnico-Responsavel": "Bruno Mocelin"
-  },
-  {
-    "Região": "Pinheirinho",
-    "Bairro": "Sítio Cercado",
-    "Técnico-Responsavel": "Bruno Mocelin"
-  },
-  {
-    "Região": "Pinheirinho",
-    "Bairro": "Capão Raso",
-    "Técnico-Responsavel": "Bruno Mocelin"
-  },
-  {
-    "Região": "Pinheirinho",
-    "Bairro": "Boqueirão",
-    "Técnico-Responsavel": "Bruno Mocelin"
-  },
-  {
-    "Região": "Pinheirinho",
-    "Bairro": "Alto do Boqueirão",
-    "Técnico-Responsavel": "Bruno Mocelin"
-  },
-  {
-    "Região": "Pinheirinho",
-    "Bairro": "CIC - Nossa Senhora da Luz",
-    "Técnico-Responsavel": "Bruno Mocelin"
-  }
-
-  {"Região":"Fazenda Rio Grande","Bairro":"Estados I","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Fazenda Rio Grande","Bairro":"Estados II","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Fazenda Rio Grande","Bairro":"Eucaliptos I","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Fazenda Rio Grande","Bairro":"Eucaliptos II","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Fazenda Rio Grande","Bairro":"Gralha Azul","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Fazenda Rio Grande","Bairro":"Iguaçu I","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Fazenda Rio Grande","Bairro":"Iguaçu II","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Fazenda Rio Grande","Bairro":"Nações","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Fazenda Rio Grande","Bairro":"Pioneiros","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Fazenda Rio Grande","Bairro":"Santa Terezinha","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Fazenda Rio Grande","Bairro":"Parque Industrial","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Fazenda Rio Grande","Bairro":"Santa Maria","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Fazenda Rio Grande","Bairro":"Jardim Veneza","Técnico-Responsavel":"Douglas Eduardo"},
-
-  {"Região":"São José dos Pinhais","Bairro":"Agarau","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"São José dos Pinhais","Bairro":"Cotia","Técnico-Responsavel":"Douglas Eduardo"},
-
-  {"Região":"Araucária Rural","Bairro":"Palmital","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Araucária Rural","Bairro":"Tietê","Técnico-Responsavel":"Douglas Eduardo"},
-
-  {"Região":"Quitandinha","Bairro":"Vista Alegre","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Quitandinha","Bairro":"Vila Nova","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Quitandinha","Bairro":"Parque Industrial","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Quitandinha","Bairro":"Moreiras","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Quitandinha","Bairro":"Engenho Velho","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Quitandinha","Bairro":"Centro","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Quitandinha","Bairro":"Campina","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Quitandinha","Bairro":"Campina I","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Quitandinha","Bairro":"Campina II","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Quitandinha","Bairro":"Vila Prado","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Quitandinha","Bairro":"Roseira","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Quitandinha","Bairro":"Pangaré","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Quitandinha","Bairro":"Lagoa Verde","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Quitandinha","Bairro":"Cerro Verde","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Quitandinha","Bairro":"Campina dos Pretos","Técnico-Responsavel":"Douglas Eduardo"},
-  {"Região":"Quitandinha","Bairro":"Bom Jesus","Técnico-Responsavel":"Douglas Eduardo"},
-
-  {"Região":"Curitiba","Bairro":"Caximba","Técnico-Responsavel":"Douglas Eduardo"}
-
-  {"Região":"Campo Magro","Bairro":"Água Boa","Técnico-Responsavel":"Pamela Christina"},
-  {"Região":"Campo Magro","Bairro":"Boa Vista","Técnico-Responsavel":"Pamela Christina"},
-  {"Região":"Campo Magro","Bairro":"Centro","Técnico-Responsavel":"Pamela Christina"},
-  {"Região":"Campo Magro","Bairro":"Jardim Bom Pastor","Técnico-Responsavel":"Pamela Christina"},
-  {"Região":"Campo Magro","Bairro":"Jardim Novos Horizontes","Técnico-Responsavel":"Pamela Christina"},
-  {"Região":"Campo Magro","Bairro":"Jardim Viviane","Técnico-Responsavel":"Pamela Christina"},
-
-  {"Região":"Campo Largo","Bairro":"Bateias","Técnico-Responsavel":"Pamela Christina"},
-
-  {"Região":"Curitiba","Bairro":"São Braz","Técnico-Responsavel":"Pamela Christina"},
-  {"Região":"Curitiba","Bairro":"Santa Felicidade","Técnico-Responsavel":"Pamela Christina"},
-  {"Região":"Curitiba","Bairro":"Butiatuvinha","Técnico-Responsavel":"Pamela Christina"},
-  {"Região":"Curitiba","Bairro":"Orleans","Técnico-Responsavel":"Pamela Christina"},
-
-  {"Região":"Almirante Tamandaré","Bairro":"Lamenha Pequena","Técnico-Responsavel":"Pamela Christina"},
-  {"Região":"Almirante Tamandaré","Bairro":"Lamenha Grande","Técnico-Responsavel":"Pamela Christina"},
-  {"Região":"Almirante Tamandaré","Bairro":"Botiatuba","Técnico-Responsavel":"Pamela Christina"},
-  {"Região":"Almirante Tamandaré","Bairro":"Tanguá","Técnico-Responsavel":"Pamela Christina"},
-  {"Região":"Almirante Tamandaré","Bairro":"Planta Almirante","Técnico-Responsavel":"Pamela Christina"},
-  {"Região":"Almirante Tamandaré","Bairro":"Tanguá Solar","Técnico-Responsavel":"Pamela Christina"},
-  {"Região":"Almirante Tamandaré","Bairro":"Marinoni","Técnico-Responsavel":"Pamela Christina"},
-  {"Região":"Almirante Tamandaré","Bairro":"Loteamento Montparnasse","Técnico-Responsavel":"Pamela Christina"}
-
-  {"Região":"Tijucas do Sul","Bairro":"Campina","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"Tijucas do Sul","Bairro":"Campo Alto","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"Tijucas do Sul","Bairro":"Várzea","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"Tijucas do Sul","Bairro":"Tabatinga","Técnico-Responsavel":"Geovan Beirão"},
-
-  {"Região":"São José dos Pinhais","Bairro":"Contenda","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Córrego Fundo","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Roça Velha","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Malhada","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Saltinho da Malhada","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Inhaíva","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"São Marcos","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Jardim Aquários","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Jardim Carmen","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Del Rey","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Campo Largo da Roseira","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Campina do Taquaral","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Cachoeira","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Arujá","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Colônia Zacarias","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Agaraú","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Campestre da Faxina","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Portãozinho","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Fazenda Rio Grande","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Centro","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Reserva dos Pinhais","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"San Marino / Manacás","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Saint Michel","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Rio de Una","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Aristocrata","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Cidade Jardim","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Barro Preto","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Bom Jesus","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Boneca do Iguaçu","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Braga","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Colônia Marcelino","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Colônia Rio Grande","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Cotia","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Cruzeiro","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Guaraituba","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Guatupê","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Itália","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Jurema","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Minguava","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Ouro Fino","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Parque da Fonte","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Pedro Moro","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Rio Pequeno","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Roseira de Campo Largo","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Santo Antônio","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Silveira da Mota","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"São Cristóvão","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"São Pedro Matulão","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Morro Vermelho","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Colono","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Xaxim","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Ambrosios","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Flores","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Fagundes","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Cascatinha","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Lagoa","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Lagoinha","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Campestre","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"São João","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Ribeirão do Meio","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Ribeirão do Mel","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Postinho","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Vila Rural","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Bosque da Saúde","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Vila Cubas I","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Vila Cubas II","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Barbacuá","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Anne Louise","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Jardim das Oliveiras","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Campo das Flores","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Contenda das Flores","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Fazendinha","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Gama (até a Igreja)","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Panagro","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Rincão","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Rio Abaixo","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Rodeio","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Salto da Boa Vista","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Vossoroca","Técnico-Responsavel":"Geovan Beirão"},
-  {"Região":"São José dos Pinhais","Bairro":"Campo Comprido","Técnico-Responsavel":"Geovan Beirão"}
-
-  {"Região":"Lapa","Bairro":"Johanesdorf","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Passa Dois","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Piripau","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Colônia Stinglin","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Palmital de Baixo","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Pedra Lisa","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Rio da Areia","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Rio da Várzea","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Santo Amaro","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"São Bento","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"São João do Caíva","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"São Lucas","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Água Azul","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Alves Cardoso","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Barra dos Melos","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Bonito","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Butiá","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Campina","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Canoeiros","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Capão Bonito","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Carqueja","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Cento e Doze","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Centro","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Colônia Municipal","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Colônia Restinga","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Contestado","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Faxinal dos Castilhos","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Faxinal dos Correias","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Feixo do Botiatuva","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Mato Preto","Técnico-Responsavel":"Carlos William Dias Loures"},
-  {"Região":"Lapa","Bairro":"Núcleo Leiteiro","Técnico-Responsavel":"Carlos William Dias Loures"},
-
-  {"Região":"Contenda","Bairro":"Campestre","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"Campina das Palmeiras","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"Campo Thomaz","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"Capinzal","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"Capoeira Grande","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"Catanduvas","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"Feixo","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"Itaperubá","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"Lagoa Grande","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"Loteamento dos Cordeiro","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"Loteamento São João","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"Mariental","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"Mato Dentro","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"Passo da Gralha","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"Rio do Cacho","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"Serrinha","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"Vila Furmann","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"Vila Sossego","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"02 de Maio","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"João Franco","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"José Mosson","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"Otávio Alfredo da Silveira","Técnico-Responsavel":"André Carlos Batista"},
-  {"Região":"Contenda","Bairro":"Eusébio Hammerschmidt","Técnico-Responsavel":"André Carlos Batista"}
 ]
 
-
+]
 
 ];
 // ---------- FIM DOS DADOS ----------
@@ -691,6 +705,7 @@ performSearch();
 </script>
 </body>
 </html>
+
 
 
 
